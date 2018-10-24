@@ -5,6 +5,7 @@
     "@rails/webpacker": "3.5"
   },
   "devDependencies": {
+    "patternfly": "^3.55.0",
     "webpack-dev-server": "2.11.2"
   }
 }
