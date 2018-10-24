@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## TODO:
+
+* Make a descent README
+* simple form
+* Deploy to heroku
