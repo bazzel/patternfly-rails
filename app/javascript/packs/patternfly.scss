@@ -149,3 +149,11 @@ $img-path:       "~patternfly/dist/img/";
 @import '~patternfly/toolbar';
 @import '~patternfly/vertical-nav';
 @import '~patternfly/wizard';
+
+.hint-block {
+  @extend .help-block;
+
+  .has-error & {
+    color: lighten($text-color, 25%);
+  }
+}
