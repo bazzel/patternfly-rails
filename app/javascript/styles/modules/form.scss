@@ -1,0 +1,8 @@
+.hint-block {
+  @extend .help-block;
+
+  .has-error & {
+    color: lighten($text-color, 25%);
+  }
+}
+
