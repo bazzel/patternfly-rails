@@ -1,7 +1,7 @@
 module PatternFly
   class Alert
     ALERT_TYPES = [:success, :info, :warning, :danger] unless const_defined?(:ALERT_TYPES)
-    delegate :flash, :raw, :content_tag, to: :@template
+    delegate :flash, :raw, :content_tag, :safe_join, to: :@template
 
     attr_reader :options, :template
 
@@ -28,14 +28,20 @@ module PatternFly
           class: "alert fade in alert-#{type} #{tag_class}"
         }.merge(options)
 
-        close_button = content_tag(:button, raw("&times;"), type: "button", class: "close", "data-dismiss" => "alert")
-
         Array(message).each do |msg|
           text = content_tag(:div, close_button + msg, tag_options)
           flash_messages << text if msg
         end
       end
-      flash_messages.join("\n").html_safe
+      safe_join flash_messages, "\n"
+    end
+
+    private
+
+    def close_button
+      content_tag(:button, type: 'button', class: 'close', 'data-dismiss' => 'alert') do
+        content_tag(:span, '', class: 'pficon pficon-close')
+      end
     end
   end
 end
