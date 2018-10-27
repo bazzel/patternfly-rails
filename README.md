@@ -26,5 +26,8 @@ Things you may want to cover:
 ## TODO:
 
 * Make a descent README
+* Tests
 * simple form
+  * flash message
+  * dismiss button
 * Deploy to heroku
