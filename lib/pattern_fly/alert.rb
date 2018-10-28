@@ -40,8 +40,8 @@ module PatternFly
           next if msg.nil?
 
           content_tag(:div, close_button + icon + msg, tag_options)
-        end.flatten.compact
-      end
+        end
+      end.flatten.compact
     end
 
     def tag_options(type)
