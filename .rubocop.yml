@@ -1,0 +1,28 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - vendor/**/*
+    - features/step_definitions/**/*
+    - log/**/*
+    - node_modules/**/*
+    - tmp/**/*
+    - config/**/*
+    - spec/**/*
+    - lib/tasks/**/*.rake
+    - test/test_helper.rb
+    - Gemfile
+    - RakeFile
+    - Guardfile
+
+Rails:
+  Enabled: true
+
+LineLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+MethodLength:
+  Max: 15

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require './lib/pattern_fly/icons'
 
 module PatternFly
   class Alert
-    PF_ALERT_TYPES = [:success, :info, :warning, :danger]
+    PF_ALERT_TYPES = %i[success info warning danger].freeze
     delegate :flash, :raw, :content_tag, :safe_join, to: :@template
 
     ICONS = {
@@ -10,7 +12,7 @@ module PatternFly
       info: 'info',
       warning: 'warning',
       danger: 'error'
-    }
+    }.freeze
 
     attr_reader :options, :template
 
@@ -25,12 +27,8 @@ module PatternFly
       flash.each do |type, message|
         # Skip empty messages, e.g. for devise messages set to nothing in a locale file.
         next if message.blank?
-        next unless pf_type = pf_type(type)
+        next unless (pf_type = pf_type(type))
 
-        tag_class = options.extract!(:class)[:class]
-        tag_options = {
-          class: "alert fade in alert-#{pf_type} #{tag_class}"
-        }.merge(options)
         icon = icon(pf_type)
 
         Array(message).each do |msg|
@@ -42,6 +40,13 @@ module PatternFly
     end
 
     private
+
+    def tag_class
+      tag_class = options.extract!(:class)[:class]
+      {
+        class: "alert fade in alert-#{pf_type} #{tag_class}"
+      }.merge(options)
+    end
 
     def close_button
       @close_button ||= begin

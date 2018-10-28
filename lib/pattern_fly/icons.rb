@@ -1,16 +1,20 @@
+# frozen_string_literal: true
+
 module PatternFly
   class Icons
+    extend ActionView::Helpers::TagHelper
+
     PF_ICONS = {
-      ok:       'ok',
-      info:     'info',
-      warning:  'warning-triangle-o',
-      error:    'error-circle-o'
-    }
+      ok: 'ok',
+      info: 'info',
+      warning: 'warning-triangle-o',
+      error: 'error-circle-o'
+    }.freeze
 
     class << self
       PF_ICONS.each do |k, v|
         define_method(k) do
-          "<span class='pficon pficon-#{v}'></span>".html_safe
+          content_tag(:span, '', class: "pficon pficon-#{v}")
         end
       end
     end
