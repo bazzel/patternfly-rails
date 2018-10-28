@@ -3,6 +3,13 @@ module PatternFly
     ALERT_TYPES = [:success, :info, :warning, :danger] unless const_defined?(:ALERT_TYPES)
     delegate :flash, :raw, :content_tag, :safe_join, to: :@template
 
+    ICON_CLASSES = {
+      success: 'pficon-ok',
+      info: 'pficon-info',
+      warning: 'pficon-warning-triangle-o',
+      danger: 'pficon-error-circle-o'
+    }
+
     attr_reader :options, :template
 
     def initialize(options, template)
@@ -23,13 +30,17 @@ module PatternFly
         type = :danger  if type == :error
         next unless ALERT_TYPES.include?(type)
 
+        icon_class = ICON_CLASSES[type]
+
+        icon = content_tag(:span, '', class: "pficon #{icon_class}")
+
         tag_class = options.extract!(:class)[:class]
         tag_options = {
           class: "alert fade in alert-#{type} #{tag_class}"
         }.merge(options)
 
         Array(message).each do |msg|
-          text = content_tag(:div, close_button + msg, tag_options)
+          text = content_tag(:div, close_button + icon + msg, tag_options)
           flash_messages << text if msg
         end
       end
