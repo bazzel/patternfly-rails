@@ -1,13 +1,15 @@
+require './lib/pattern_fly/icons'
+
 module PatternFly
   class Alert
     PF_ALERT_TYPES = [:success, :info, :warning, :danger]
     delegate :flash, :raw, :content_tag, :safe_join, to: :@template
 
-    ICON_CLASSES = {
-      success: 'pficon-ok',
-      info: 'pficon-info',
-      warning: 'pficon-warning-triangle-o',
-      danger: 'pficon-error-circle-o'
+    ICONS = {
+      success: 'ok',
+      info: 'info',
+      warning: 'warning',
+      danger: 'error'
     }
 
     attr_reader :options, :template
@@ -29,9 +31,10 @@ module PatternFly
         tag_options = {
           class: "alert fade in alert-#{pf_type} #{tag_class}"
         }.merge(options)
+        icon = icon(pf_type)
 
         Array(message).each do |msg|
-          text = content_tag(:div, close_button + icon(pf_type) + msg, tag_options)
+          text = content_tag(:div, close_button + icon + msg, tag_options)
           flash_messages << text if msg
         end
       end
@@ -49,9 +52,7 @@ module PatternFly
     end
 
     def icon(type)
-      icon_class = ICON_CLASSES[type]
-
-      content_tag(:span, '', class: "pficon #{icon_class}")
+      Icons.send(ICONS[type])
     end
 
     def pf_type(type)

@@ -1,6 +1,8 @@
+require Rails.root.join 'lib/pattern_fly/icons'
+
 module PatternFlyStuff
   def translate_error_notification
-    "<span class='pficon pficon-error-circle-o'></span>" + super
+    PatternFly::Icons.error + super
   end
 end
 
