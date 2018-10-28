@@ -22,25 +22,27 @@ module PatternFly
     end
 
     def render
-      flash_messages = []
-
-      flash.each do |type, message|
-        # Skip empty messages, e.g. for devise messages set to nothing in a locale file.
-        next if message.blank?
-        next unless (pf_type = pf_type(type))
-
-        icon = icon(pf_type)
-        tag_options = tag_options(pf_type)
-
-        Array(message).each do |msg|
-          text = content_tag(:div, close_button + icon + msg, tag_options)
-          flash_messages << text if msg
-        end
-      end
       safe_join flash_messages
     end
 
     private
+
+    def flash_messages
+      flash.map do |type, message|
+        # Skip empty messages, e.g. for devise messages set to nothing in a locale file.
+        next if message.blank?
+        next if (pf_type = pf_type(type)).nil?
+
+        icon        = icon(pf_type)
+        tag_options = tag_options(pf_type)
+
+        Array(message).map do |msg|
+          next if msg.nil?
+
+          content_tag(:div, close_button + icon + msg, tag_options)
+        end.flatten.compact
+      end
+    end
 
     def tag_options(type)
       tag_class = options.extract!(:class)[:class]
