@@ -1,20 +1,17 @@
 module PatternFly
   class Icons
+    PF_ICONS = {
+      ok:       'ok',
+      info:     'info',
+      warning:  'warning-triangle-o',
+      error:    'error-circle-o'
+    }
+
     class << self
-      def ok
-        "<span class='pficon pficon-ok'></span>".html_safe
-      end
-
-      def info
-        "<span class='pficon pficon-info'></span>".html_safe
-      end
-
-      def warning
-        "<span class='pficon pficon-warning-triangle-o'></span>".html_safe
-      end
-
-      def error
-        "<span class='pficon pficon-error-circle-o'></span>".html_safe
+      PF_ICONS.each do |k, v|
+        define_method(k) do
+          "<span class='pficon pficon-#{v}'></span>".html_safe
+        end
       end
     end
   end
