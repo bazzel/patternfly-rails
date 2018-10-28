@@ -30,21 +30,22 @@ module PatternFly
         next unless (pf_type = pf_type(type))
 
         icon = icon(pf_type)
+        tag_options = tag_options(pf_type)
 
         Array(message).each do |msg|
           text = content_tag(:div, close_button + icon + msg, tag_options)
           flash_messages << text if msg
         end
       end
-      safe_join flash_messages, "\n"
+      safe_join flash_messages
     end
 
     private
 
-    def tag_class
+    def tag_options(type)
       tag_class = options.extract!(:class)[:class]
       {
-        class: "alert fade in alert-#{pf_type} #{tag_class}"
+        class: "alert fade in alert-#{type} #{tag_class}"
       }.merge(options)
     end
 
