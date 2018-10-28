@@ -33,15 +33,31 @@ module PatternFly
         next if message.blank?
         next if (pf_type = pf_type(type)).nil?
 
-        icon        = icon(pf_type)
-        tag_options = tag_options(pf_type)
-
-        Array(message).map do |msg|
-          next if msg.nil?
-
-          content_tag(:div, close_button + icon + msg, tag_options)
-        end
+        flash_message(Array(message), pf_type)
       end.flatten.compact
+    end
+
+    def pf_type(type)
+      pf_type = case type.to_sym
+                when :notice then :success
+                when :alert, :error then :danger
+                else type.to_sym
+                end
+
+      PF_ALERT_TYPES.include?(pf_type) ? pf_type : nil
+    end
+
+    def flash_message(messages, type)
+      icon        = icon(type)
+      tag_options = tag_options(type)
+
+      messages.delete_if(&:nil?).map do |msg|
+        content_tag(:div, close_button + icon + msg, tag_options)
+      end
+    end
+
+    def icon(type)
+      Icons.send(ICONS[type])
     end
 
     def tag_options(type)
@@ -57,20 +73,6 @@ module PatternFly
                             content_tag(:span, '', class: 'pficon pficon-close')
                           end
                         end
-    end
-
-    def icon(type)
-      Icons.send(ICONS[type])
-    end
-
-    def pf_type(type)
-      pf_type = case type.to_sym
-                when :notice then :success
-                when :alert, :error then :danger
-                else type.to_sym
-                end
-
-      PF_ALERT_TYPES.include?(pf_type) ? pf_type : nil
     end
   end
 end
