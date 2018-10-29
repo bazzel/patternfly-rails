@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2018_10_29_060544) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.integer "year"
     t.string "plot_summary", limit: 500
-    t.decimal "gross_takings", precision: 5, scale: 2
+    t.decimal "gross_takings", precision: 13, scale: 2
     t.boolean "available_on_dvd"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
