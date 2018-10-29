@@ -20,7 +20,7 @@
         <td><%= movie.title %></td>
         <td><%= movie.year %></td>
         <td><%= movie.plot_summary %></td>
-        <td><%= movie.gross_takings %></td>
+        <td><%= number_to_currency movie.gross_takings %></td>
         <td><%= movie.available_on_dvd %></td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>

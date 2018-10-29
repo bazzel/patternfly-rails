@@ -6,3 +6,11 @@
   }
 }
 
+form {
+  abbr[title],
+  abbr[data-original-title] {
+    border-bottom: 0;
+    color: $state-danger-text;
+    text-decoration: none;
+  }
+}
