@@ -2,15 +2,11 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :year %>
-    <%= f.input :plot_summary %>
-    <%= f.input :gross_takings %>
-    <%= f.input :available_on_dvd %>
-  </div>
+  <%= f.input :title %>
+  <%= f.input :year %>
+  <%= f.input :plot_summary %>
+  <%= f.input :gross_takings %>
+  <%= f.input :available_on_dvd %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit_cancel, cancel: movies_path %>
 <% end %>

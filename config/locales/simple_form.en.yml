@@ -31,3 +31,5 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+    buttons:
+      cancel: Cancel
