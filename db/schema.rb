@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_053351) do
+ActiveRecord::Schema.define(version: 2018_10_29_060544) do
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.integer "year"
+    t.string "plot_summary", limit: 500
+    t.decimal "gross_takings", precision: 5, scale: 2
+    t.boolean "available_on_dvd"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"

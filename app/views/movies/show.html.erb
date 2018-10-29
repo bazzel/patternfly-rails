@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @movie.year %>
+</p>
+
+<p>
+  <strong>Plot summary:</strong>
+  <%= @movie.plot_summary %>
+</p>
+
+<p>
+  <strong>Gross takings:</strong>
+  <%= @movie.gross_takings %>
+</p>
+
+<p>
+  <strong>Available on dvd:</strong>
+  <%= @movie.available_on_dvd %>
+</p>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
