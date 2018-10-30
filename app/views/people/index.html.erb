@@ -5,21 +5,17 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Born on</th>
-      <th>Died on</th>
-      <th colspan="3"></th>
+      <th><%= Person.human_attribute_name(:name) %></th>
+      <th><%= Person.human_attribute_name(:born_on) %></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= link_to person.name, edit_person_path(person) %></td>
-        <td><%= person.surname %></td>
+        <td><%= link_to person.full_name, edit_person_path(person) %></td>
         <td><%= person.born_on %></td>
-        <td><%= person.died_on %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

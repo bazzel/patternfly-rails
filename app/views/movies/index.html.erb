@@ -5,11 +5,11 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Year</th>
-      <th>Plot summary</th>
-      <th>Gross takings</th>
-      <th>Available on dvd</th>
+      <th><%= Movie.human_attribute_name(:title) %></th>
+      <th><%= Movie.human_attribute_name(:year) %></th>
+      <th><%= Movie.human_attribute_name(:plot_summary) %></th>
+      <th><%= Movie.human_attribute_name(:gross_takings) %></th>
+      <th><%= Movie.human_attribute_name(:available_on_dvd) %></th>
       <th></th>
     </tr>
   </thead>

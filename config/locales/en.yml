@@ -30,4 +30,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      person:
+        born_on: Date of Birth
+        died_on: Date of Death
+      movie:
+        plot_summary: Plot Summary
+        gross_takings: Gross Takings
+        available_on_dvd: Is Available On DVD
+
