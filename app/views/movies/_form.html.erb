@@ -4,7 +4,7 @@
 
   <%= f.input :title %>
   <%= f.input :year %>
-  <%= f.input :plot_summary %>
+  <%= f.input :plot_summary, as: :text, input_html: { rows: 4 } %>
   <%= f.input :gross_takings %>
   <%= f.input :available_on_dvd %>
 

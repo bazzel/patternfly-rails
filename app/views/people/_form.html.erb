@@ -1,0 +1,11 @@
+<%= simple_form_for(@person) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :name %>
+  <%= f.input :surname %>
+  <%= f.input :born_on %>
+  <%= f.input :died_on %>
+
+  <%= f.button :submit_cancel, cancel: people_path %>
+<% end %>

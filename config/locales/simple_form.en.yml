@@ -19,6 +19,12 @@ en:
     #       email: 'E-mail to sign in.'
     #     edit:
     #       email: 'E-mail.'
+    labels:
+      movie:
+        plot_summary: Plot Summary
+        gross_takings: Gross Takings
+        available_on_dvd: Is Available On DVD
+
     hints:
       post:
         title: 'Give me a title'

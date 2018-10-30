@@ -9,9 +9,24 @@
 require 'csv'
 
 Movie.destroy_all
+Person.destroy_all
+Genre.destroy_all
 
-filename = Rails.root.join('db/movies.csv')
-
-CSV.foreach(filename, col_sep: ';', headers: true) do |row|
+CSV.foreach(Rails.root.join('db/movies.csv'), col_sep: ';', headers: true) do |row|
   Movie.create row.to_h
 end
+
+CSV.foreach(Rails.root.join('db/people.csv'), col_sep: ';', headers: true) do |row|
+  Person.create row.to_h
+end
+
+genre_min_age = [
+  ['Comedy', 6],
+  ['Action', 12],
+  ['Drama', 16],
+  ['Horror', 18]
+]
+
+Genre.create( genre_min_age.each_with_index.map do |e,i|
+  %w(label minimum_age position).zip(e.push(i)).to_h
+end)
