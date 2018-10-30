@@ -3,8 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
-    "jquery": "^3.3.1",
-    "webpack-merge": "^4.1.4"
+    "jquery": "^3.3.1"
   },
   "devDependencies": {
     "patternfly": "^3.55.0",
