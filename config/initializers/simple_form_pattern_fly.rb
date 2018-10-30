@@ -149,7 +149,7 @@ SimpleForm.setup do |config|
     file: :horizontal_file_input,
     boolean: :horizontal_boolean,
     datetime: :multi_select,
-    date: :multi_select,
+    #date: :multi_select,
     time: :multi_select
   }
   config.default_form_class = 'form-horizontal'
