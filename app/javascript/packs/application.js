@@ -7,19 +7,3 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-// See: https://github.com/patternfly/patternfly/blob/master/QUICKSTART.md#using-patternfly-in-your-application
-//
-import 'bootstrap/dist/js/bootstrap'; // Bootstrap JS
-import 'moment/moment'; // Bootstrap Date Time Picker - requires Moment
-import 'bootstrap-datepicker/dist/js/bootstrap-datepicker'; // Bootstrap Date Picker
-
-const ready = () => {
-  $('.bootstrap-datepicker').datepicker({
-    autoclose: true,
-    todayBtn: "linked",
-    todayHighlight: true
-  });
-}
-
-$(document).on('turbolinks:load', ready)
-

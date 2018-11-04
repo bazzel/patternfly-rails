@@ -14,3 +14,21 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// See: https://github.com/patternfly/patternfly/blob/master/QUICKSTART.md#using-patternfly-in-your-application
+//
+//= require 'jquery/dist/jquery'
+//= require 'bootstrap/dist/js/bootstrap'
+//= require 'moment/moment'
+//= require 'bootstrap-datepicker/dist/js/bootstrap-datepicker'
+
+const ready = function() {
+  $('.bootstrap-datepicker').datepicker({
+    autoclose: true,
+    todayBtn: "linked",
+    todayHighlight: true
+  });
+}
+
+$(document).on('turbolinks:load', ready)
+
